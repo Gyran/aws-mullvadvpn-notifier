@@ -34,10 +34,10 @@ const handler = async () => {
     console.log('Will notify!');
 
     const notifyy = new Notifyy({
-      users: NOTIFYY_TOKEN
+      users: NOTIFYY_TOKEN,
     });
     await notifyy.send({
-      title: `${daysLeft} dagar kvar på mullvad innan det går ut!`
+      title: `${daysLeft} dagar kvar på mullvad innan det går ut!`,
     });
   } else {
     console.log('Did not notify');

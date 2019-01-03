@@ -4,7 +4,7 @@ const HOST = 'api.mullvad.net';
 const PORT = 443;
 const PATH = '/rpc/';
 
-const _post = async (data) => {
+const _post = async data => {
   return new Promise((resovle, reject) => {
     const postData = JSON.stringify(data);
 
@@ -49,9 +49,9 @@ const _post = async (data) => {
     request.write(postData);
     request.end();
   });
-}
+};
 
-const getExpiry = async (accountToken) => {
+const getExpiry = async accountToken => {
   const data = {
     id: 1,
     jsonrpc: '2.0',
@@ -65,6 +65,5 @@ const getExpiry = async (accountToken) => {
 };
 
 // curl -s -d "{\"id\": 1, \"jsonrpc\": \"2.0\", \"method\":\"get_expiry\", \"params\":[\"$account_token\"] }" -H "Content-Type: application/json" $MULLVAD_API_URL
-
 
 module.exports = getExpiry;
