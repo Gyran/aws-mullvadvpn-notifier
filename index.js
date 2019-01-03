@@ -1,21 +1,14 @@
 const Notifyy = require('node-notifyy');
 
 const getExpiry = require('./get-expiry');
-const {
-  getEnvValue,
-  getEnvIntegerValue,
-} = require('./env-util');
+const { getEnvValue, getEnvIntegerValue } = require('./env-util');
 
 // SETTINGS
 const MULLVADVPN_ACCOUNT_TOKEN = getEnvValue('MULLVADVPN_ACCOUNT_TOKEN');
 const NOTIFYY_TOKEN = getEnvValue('NOTIFYY_TOKEN');
 const NOTIFY_AT_DAYS_LEFT = getEnvIntegerValue('NOTIFY_AT_DAYS_LEFT', -1);
 
-if (
-  !MULLVADVPN_ACCOUNT_TOKEN ||
-  !NOTIFYY_TOKEN ||
-  NOTIFY_AT_DAYS_LEFT < 0
-) {
+if (!MULLVADVPN_ACCOUNT_TOKEN || !NOTIFYY_TOKEN || NOTIFY_AT_DAYS_LEFT < 0) {
   throw new Error('You need to configure first!');
 }
 
@@ -44,11 +37,11 @@ const handler = async () => {
       users: NOTIFYY_TOKEN
     });
     await notifyy.send({
-      title: `${ daysLeft } dagar kvar på mullvad innan det går ut!`,
+      title: `${daysLeft} dagar kvar på mullvad innan det går ut!`
     });
   } else {
     console.log('Did not notify');
   }
-}
+};
 
 exports.handler = handler;
