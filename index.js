@@ -1,5 +1,6 @@
+const sendTelegramMessage = require('@gyran/send-telegram-message');
+
 const getExpiry = require('./get-expiry');
-const sendTelegramMessage = require('./send-telegram-message');
 const { getEnvValue, getEnvIntegerValue } = require('./env-util');
 
 // SETTINGS

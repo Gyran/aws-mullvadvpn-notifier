@@ -21,5 +21,8 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "dependencies": {
+    "@gyran/send-telegram-message": "^1.0.0"
   }
 }
