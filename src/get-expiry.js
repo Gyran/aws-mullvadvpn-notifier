@@ -1,4 +1,4 @@
-const https = require('https');
+import https from 'node:https';
 
 const HOST = 'api.mullvad.net';
 const PORT = 443;
@@ -66,4 +66,4 @@ const getExpiry = async accountToken => {
 
 // curl -s -d "{\"id\": 1, \"jsonrpc\": \"2.0\", \"method\":\"get_expiry\", \"params\":[\"$account_token\"] }" -H "Content-Type: application/json" $MULLVAD_API_URL
 
-module.exports = getExpiry;
+export default getExpiry;

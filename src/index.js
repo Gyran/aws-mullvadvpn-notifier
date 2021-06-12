@@ -1,10 +1,12 @@
-const sendTelegramMessage = require('@gyran/send-telegram-message');
+import sendTelegramMessage from '@gyran/send-telegram-message';
+import getEnvValue from 'get-env-value';
 
-const getExpiry = require('./get-expiry');
-const getEnvValue = require('get-env-value');
+import getExpiry from './get-expiry.js';
 
 // SETTINGS
-const MULLVADVPN_ACCOUNT_TOKEN = getEnvValue.stringValue('MULLVADVPN_ACCOUNT_TOKEN');
+const MULLVADVPN_ACCOUNT_TOKEN = getEnvValue.stringValue(
+  'MULLVADVPN_ACCOUNT_TOKEN',
+);
 const TELEGRAM_BOT_TOKEN = getEnvValue.stringValue('TELEGRAM_BOT_TOKEN');
 const TELEGRAM_CHAT_ID = getEnvValue.integerValue('TELEGRAM_CHAT_ID');
 const NOTIFY_AT_DAYS_LEFT = getEnvValue.integerValue('NOTIFY_AT_DAYS_LEFT', -1);
@@ -50,4 +52,6 @@ const handler = async () => {
   }
 };
 
-exports.handler = handler;
+const module = { handler };
+
+export default module;
