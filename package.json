@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build",
     "prearchive": "npm run clean && rm -rf node_modules && npm install --production",
-    "archive": "mkdir -p build && zip -r build/aws-mullvadvnp-notifier.zip *.js node_modules",
+    "archive": "mkdir -p build && zip -r build/aws-mullvadvnp-notifier.zip src/*.js node_modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

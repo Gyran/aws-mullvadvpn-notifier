@@ -22,8 +22,8 @@ const DAY_MS = 86400000;
 
 const handler = async () => {
   console.log('Starting!');
-  console.log('MULLVADVPN_ACCOUNT_TOKEN:', MULLVADVPN_ACCOUNT_TOKEN);
-  console.log('TELEGRAM_BOT_TOKEN:', TELEGRAM_BOT_TOKEN);
+  console.log('MULLVADVPN_ACCOUNT_TOKEN: ***');
+  console.log('TELEGRAM_BOT_TOKEN: ***');
   console.log('TELEGRAM_CHAT_ID:', TELEGRAM_CHAT_ID);
   console.log('NOTIFY_AT_DAYS_LEFT:', NOTIFY_AT_DAYS_LEFT);
 
