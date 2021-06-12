@@ -26,6 +26,7 @@
     }
   },
   "dependencies": {
-    "@gyran/send-telegram-message": "^1.0.0"
+    "@gyran/send-telegram-message": "^1.0.0",
+    "get-env-value": "^2.1.0"
   }
 }

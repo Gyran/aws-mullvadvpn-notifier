@@ -1,13 +1,13 @@
 const sendTelegramMessage = require('@gyran/send-telegram-message');
 
 const getExpiry = require('./get-expiry');
-const { getEnvValue, getEnvIntegerValue } = require('./env-util');
+const getEnvValue = require('get-env-value');
 
 // SETTINGS
-const MULLVADVPN_ACCOUNT_TOKEN = getEnvValue('MULLVADVPN_ACCOUNT_TOKEN');
-const TELEGRAM_BOT_TOKEN = getEnvValue('TELEGRAM_BOT_TOKEN');
-const TELEGRAM_CHAT_ID = getEnvIntegerValue('TELEGRAM_CHAT_ID');
-const NOTIFY_AT_DAYS_LEFT = getEnvIntegerValue('NOTIFY_AT_DAYS_LEFT', -1);
+const MULLVADVPN_ACCOUNT_TOKEN = getEnvValue.stringValue('MULLVADVPN_ACCOUNT_TOKEN');
+const TELEGRAM_BOT_TOKEN = getEnvValue.stringValue('TELEGRAM_BOT_TOKEN');
+const TELEGRAM_CHAT_ID = getEnvValue.integerValue('TELEGRAM_CHAT_ID');
+const NOTIFY_AT_DAYS_LEFT = getEnvValue.integerValue('NOTIFY_AT_DAYS_LEFT', -1);
 
 if (
   !MULLVADVPN_ACCOUNT_TOKEN ||
