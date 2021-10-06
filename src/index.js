@@ -1,7 +1,7 @@
 const sendTelegramMessage = require('@gyran/send-telegram-message');
+const getEnvValue = require('get-env-value');
 
 const getExpiry = require('./get-expiry');
-const getEnvValue = require('get-env-value');
 
 // SETTINGS
 const MULLVADVPN_ACCOUNT_TOKEN = getEnvValue.stringValue('MULLVADVPN_ACCOUNT_TOKEN');
