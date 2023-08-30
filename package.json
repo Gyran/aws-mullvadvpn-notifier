@@ -2,31 +2,25 @@
   "name": "aws-mullvadvpn-notifier",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "clean": "rm -rf build",
-    "prearchive": "npm run clean && rm -rf node_modules && npm install --production",
-    "archive": "mkdir -p build && zip -r build/aws-mullvadvnp-notifier.zip src/*.js node_modules",
+    "prearchive": "npm run clean && mkdir -p build && cp package*.json build/ && cd build && npm ci --omit=dev",
+    "archive": "cp -r src build && cd build && zip -r aws-mullvadvnp-notifier.zip *",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "husky": "^3.0.1",
-    "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1"
+    "dotenv": "^16.3.1",
+    "prettier": "^3.0.3"
   },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
   "dependencies": {
-    "@gyran/send-telegram-message": "^1.0.0",
+    "@gyran/send-telegram-message": "^2.1.0",
     "get-env-value": "^4.0.0"
   }
 }

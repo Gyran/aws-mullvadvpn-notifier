@@ -1,10 +1,11 @@
-const sendTelegramMessage = require('@gyran/send-telegram-message');
-const getEnvValue = require('get-env-value');
-
-const getExpiry = require('./get-expiry');
+import sendTelegramMessage from '@gyran/send-telegram-message';
+import getExpiry from './get-expiry.mjs';
+import getEnvValue from 'get-env-value';
 
 // SETTINGS
-const MULLVADVPN_ACCOUNT_TOKEN = getEnvValue.stringValue('MULLVADVPN_ACCOUNT_TOKEN');
+const MULLVADVPN_ACCOUNT_TOKEN = getEnvValue.stringValue(
+  'MULLVADVPN_ACCOUNT_TOKEN',
+);
 const TELEGRAM_BOT_TOKEN = getEnvValue.stringValue('TELEGRAM_BOT_TOKEN');
 const TELEGRAM_CHAT_ID = getEnvValue.integerValue('TELEGRAM_CHAT_ID');
 const NOTIFY_AT_DAYS_LEFT = getEnvValue.integerValue('NOTIFY_AT_DAYS_LEFT', -1);
@@ -21,11 +22,11 @@ if (
 const DAY_MS = 86400000;
 
 const handler = async () => {
-  console.log('Starting!');
-  console.log('MULLVADVPN_ACCOUNT_TOKEN: ***');
-  console.log('TELEGRAM_BOT_TOKEN: ***');
-  console.log('TELEGRAM_CHAT_ID:', TELEGRAM_CHAT_ID);
-  console.log('NOTIFY_AT_DAYS_LEFT:', NOTIFY_AT_DAYS_LEFT);
+  console.info('Starting!');
+  console.info('MULLVADVPN_ACCOUNT_TOKEN: ***');
+  console.info('TELEGRAM_BOT_TOKEN: ***');
+  console.info('TELEGRAM_CHAT_ID:', TELEGRAM_CHAT_ID);
+  console.info('NOTIFY_AT_DAYS_LEFT:', NOTIFY_AT_DAYS_LEFT);
 
   const expiry = await getExpiry(MULLVADVPN_ACCOUNT_TOKEN);
   const expiryTime = new Date(expiry);
@@ -35,10 +36,10 @@ const handler = async () => {
 
   const daysLeft = Math.floor(timeLeft / DAY_MS);
 
-  console.log('Days left:', daysLeft);
+  console.info('Days left:', daysLeft);
 
   if (daysLeft <= NOTIFY_AT_DAYS_LEFT && daysLeft >= 0) {
-    console.log('Will notify!');
+    console.info('Will notify!');
 
     await sendTelegramMessage(
       TELEGRAM_BOT_TOKEN,
@@ -46,8 +47,8 @@ const handler = async () => {
       `${daysLeft} dagar kvar på mullvad innan det går ut!`,
     );
   } else {
-    console.log('Did not notify');
+    console.info('Did not notify');
   }
 };
 
-exports.handler = handler;
+export { handler };
